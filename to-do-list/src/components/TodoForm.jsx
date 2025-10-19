@@ -12,6 +12,7 @@ function TodoForm({adding}){
         if(taskData.trim()){
             adding(taskData.trim());
             setTaskData("");
+            showError("");
         }else{
             showError("task cant be empty!");
         }

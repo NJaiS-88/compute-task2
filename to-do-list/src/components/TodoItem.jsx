@@ -1,11 +1,11 @@
-function TodoItem({t, complete, deletion, up, down}){
+function TodoItem({t, complete, deletion, up, down, length, index}){
     return( <>
                 <li>
-                    <div>{t.task}</div>
+                    <div className={`${t.completed? "line-through":""}`}>{t.task}</div>
                     <button onClick={() => complete(t.id)}>Complete</button>
-                    <button>Delete</button>
-                    <button>up</button>
-                    <button>down</button>
+                    <button onClick={() => deletion(t.id)}>Delete</button>
+                    <button onClick={() => up(t.id)} className={`${index<1 || t.completed? "hidden":"visible"}`}>up</button>
+                    <button onClick={() => down(t.id)} className={`${index===length-1 || t.completed? "hidden":"visible"}`}>down</button>
                 </li>
             </>)
 }
