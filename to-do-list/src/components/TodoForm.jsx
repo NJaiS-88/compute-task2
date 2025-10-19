@@ -21,7 +21,7 @@ function TodoForm({adding}){
                 <div>
                     <form onSubmit={submitfunc}>
                         <input type="text" onChange={changeTaskData} value={taskData} placeholder="click here to enter your task" 
-                            className="border-none focus:outline-none focus:border-none w-[]"></input>
+                            className="border-none focus:outline-none focus:border-none"></input>
                         <div>{taskData}</div>
                         <button type="submit">Add Task</button>
                         <div>{error}</div>
