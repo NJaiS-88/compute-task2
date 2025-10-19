@@ -84,15 +84,17 @@ function App() {
 
   return (
     <div className="max-w-[100vw] h-[100vh] overflow-hidden relative bg-blue-500">
-      <div className="md:text-[4vw] sm:text-[2rem] text-[1rem] md:top-[3%] sm:top-[4%] top-[5%] text-white absolute left-1/2 transform -translate-x-1/2">TO DO LIST</div>
-      <div>
-        <div onClick={() => {setAll(true), setActive(false), setCompleted(false)}} className={`${all? "bg-blue-500":""}`}>All</div>
-        <div onClick={() => {setAll(false), setActive(true), setCompleted(false)}} className={`${active? "bg-blue-500":""}`}>Active</div>
-        <div onClick={() => {setAll(false), setActive(false), setCompleted(true)}} className={`${completed? "bg-blue-500":""}`}>Completed</div>
+      <div className="md:text-[4vw] sm:text-[2rem] text-[1rem] font-bold md:top-[1%] sm:top-[4%] top-[5%] text-white absolute left-1/2 transform -translate-x-1/2">TO DO LIST</div>
+      <div className="flex w-fit h-fit gap-x-3.5 absolute top-[12%] left-1/2 transform -translate-x-1/2">
+        <div onClick={() => {setAll(true), setActive(false), setCompleted(false)}} className={`md:text-[1.5vw] text-[1rem] p-2 rounded-lg cursor-pointer hover:border-2  hover:border-blue-100 transition duration-150 ${all? "bg-blue-200 border-2 border-blue-100 text-black":"border-2 border-blue-400 text-white"}`}>All</div>
+        <div onClick={() => {setAll(false), setActive(true), setCompleted(false)}} className={`md:text-[1.5vw] text-[1rem] p-2 rounded-lg cursor-pointer hover:border-2  hover:border-blue-100 transition duration-150 ${active? "bg-blue-200 border-2 border-blue-100 text-black":"border-2 border-blue-400 text-white"}`}>Active</div>
+        <div onClick={() => {setAll(false), setActive(false), setCompleted(true)}} className={`md:text-[1.5vw] text-[1rem] p-2 rounded-lg cursor-pointer hover:border-2  hover:border-blue-100 transition duration-150 ${completed? "bg-blue-200 border-2 border-blue-100 text-black":"border-2 border-blue-400 text-white"}`}>Completed</div>
       </div>
       <div className="h-[80vh] w-[100vw] rounded-tl-[3vw] rounded-tr-[3vw] absolute bottom-0 bg-gray-200"></div>
-      <TodoForm adding={adding}></TodoForm>
-      <TodoList task={filteredTasks} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
+      <div className="w-[70vw] h-fit flex flex-col items-center justify-center top-[25%] absolute left-1/2 transform -translate-x-1/2">
+        <TodoForm adding={adding}></TodoForm>
+        <TodoList task={filteredTasks} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
+      </div>
     </div>
   )
 }
