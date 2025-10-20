@@ -8,7 +8,7 @@ function TodoItem({t, complete, deletion, up, down, length, index, edit, editing
     return( <>
                 <li>
                     <div className={`md:w-[30rem] w-[40vw]  my-4 py-3 shadow-sm justify-between ${t.completed? "bg-blue-50":"bg-white"} px-3 rounded-lg h-fit flex flex-row flex-wrap"`}>
-                        <div className={`md:w-[40%] w-[80%] break-words px-4 h-fit ${t.completed? "line-through":""} ${edit===t.id? "hidden":"visible"}`}>{t.task}</div>
+                        <div className={`md:w-[70%] w-[80%] break-words px-4 h-fit ${t.completed? "line-through":""} ${edit===t.id? "hidden":"visible"}`}>{t.task}</div>
                         <div className={`md:w-[40%] w-[100%] break-words px-4 h-fit ${t.completed? "line-through":""} ${edit===t.id? "visible":"hidden"}`}><input  type="text" value={editText} onChange={(e) => setEditText(e.target.value)} className="w-[100%] border-2 border-blue-500"></input></div>
                         <div className="">
                             <button onClick={() => editing(t.id, t.task)} className={`active:bg-blue-100 hover:bg-blue-500 text-white rounded-lg text-xl w-fit h-fit p-1 bg-blue-300 cursor-pointer mx-1 ${t.completed? "hidden":"visible"} ${edit===t.id? "hidden":"visible"}`}><MdEdit></MdEdit></button>
