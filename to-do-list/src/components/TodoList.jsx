@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-function TodoList({task, complete, deletion, up, down, length}){
+function TodoList({task, complete, deletion, up, down, length, edit, editing, editText, completeEdit, setEditText}){
     return( <>
                 <ul>
                     {
@@ -8,7 +8,7 @@ function TodoList({task, complete, deletion, up, down, length}){
                             <div className="text-gray-400 text-3xl font-bold">no tasks here</div>
                         ):(
                         task.map((t,index) => (
-                            <TodoItem key={t.id} t={t} complete={complete} deletion={deletion} up={up} down={down} length={length} index={index}>
+                            <TodoItem key={t.id} setEditText={setEditText}  t={t} editing={editing} editText={editText} completeEdit={completeEdit} complete={complete} deletion={deletion} edit={edit} up={up} down={down} length={length} index={index}>
                             </TodoItem>
                         )))
                     }

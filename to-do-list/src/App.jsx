@@ -18,6 +18,8 @@ function App() {
   const [active, setActive] = useState(false);
   const [all, setAll] = useState(true);
   const [completed, setCompleted] = useState(false);
+  const [edit, setEdit] = useState(null);
+  const [editText, setEditText] = useState("");
 
   useEffect(() => {
     localStorage.setItem("task", JSON.stringify(task))
@@ -27,6 +29,23 @@ function App() {
     setId(maxId+1)
     
   }, [task]);
+
+  const editing = (a, b) => {
+    setEdit(a);
+    setEditText(b);
+  }
+
+  const completeEdit = (a) => {
+    const newlist = task.map(t => {
+      if(t.id===a){
+        t.task = editText;
+      }
+      return t;
+    })
+    setTask(newlist);
+    setEdit(null);
+    setEditText("");
+  }
 
   const adding = (a) => {
     const obj = {"id":id, "task":a, "completed": false}
@@ -94,7 +113,7 @@ function App() {
       <div className="w-[70vw] h-fit flex flex-col items-center justify-center top-[25%] absolute left-1/2 transform -translate-x-1/2">
         <TodoForm adding={adding}></TodoForm>
         <div className=" max-h-[50vh] overflow-auto hide-scrollbar">
-          <TodoList task={filteredTasks} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
+          <TodoList task={filteredTasks} editing={editing} setEditText={setEditText} editText={editText} completeEdit={completeEdit} edit={edit} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
         </div>
       </div>
     </div>
