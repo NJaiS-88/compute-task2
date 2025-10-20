@@ -93,7 +93,9 @@ function App() {
       <div className="h-[80vh] w-[100vw] rounded-tl-[3vw] rounded-tr-[3vw] absolute bottom-0 bg-gray-200"></div>
       <div className="w-[70vw] h-fit flex flex-col items-center justify-center top-[25%] absolute left-1/2 transform -translate-x-1/2">
         <TodoForm adding={adding}></TodoForm>
-        <TodoList task={filteredTasks} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
+        <div className=" max-h-[50vh] overflow-auto hide-scrollbar">
+          <TodoList task={filteredTasks} complete={complete} deletion={deletion} up={up} down={down} length={length}></TodoList>
+        </div>
       </div>
     </div>
   )
